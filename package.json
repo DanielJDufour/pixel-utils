@@ -1,0 +1,33 @@
+{
+  "name": "pixel-converters",
+  "version": "0.0.0",
+  "description": "Simple conversion of pixels to RGB and RGBA, including automatic scaling and reserved values.",
+  "main": "pixel-converters.js",
+  "files": [
+    "pixel-converter.js"
+  ],
+  "scripts": {
+    "format": "npx prettier --arrow-parens=avoid --print-width=240 --trailing-comma=none --write *.js",
+    "test": "node -r esm test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielJDufour/pixel-converters.git"
+  },
+  "keywords": [
+    "color",
+    "pixel",
+    "rgb",
+    "rgba"
+  ],
+  "author": "Daniel J. Dufour",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/DanielJDufour/pixel-converters/issues"
+  },
+  "homepage": "https://github.com/DanielJDufour/pixel-converters#readme",
+  "devDependencies": {
+    "esm": "^3.2.25",
+    "flug": "^2.2.0"
+  }
+}
