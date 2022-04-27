@@ -1,6 +1,6 @@
 {
   "name": "pixel-converters",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simple conversion of pixels to RGB and RGBA, including automatic scaling and reserved values.",
   "main": "pixel-converters.js",
   "files": [
