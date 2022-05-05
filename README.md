@@ -19,7 +19,7 @@
   - `makeNoDataRgba` - create a no data RGB pixel
 - **transparency**
   - `addAlpha` - add an alpha transparency channel
-  - `isHidden` - check if an RGBA pixel is transparent
+  - [`isHidden`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/is-hidden) - check if an RGBA pixel is transparent
   - `setHidden` - mutates input pixel, setting alpha channel to visible
   - `showRGBA` - make RGBA visible
 
