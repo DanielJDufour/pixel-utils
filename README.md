@@ -8,6 +8,21 @@
 - range flipping
 - simple conversion between RGB and RGBA
 
+## functions
+- **conversion**
+  - `rawToRgb` - convert a raw unprocessed pixel value to RGBA
+  - `rawToRgba` - convert a raw unprocessed pixel value to RGB
+  - `rgbToRgba` - convert from RGB to RGBA
+  - `rgbaToRgb` - convert from RGBA to RGB
+- **no data**
+  - `makeNoDataRgb` - create a no data RGB pixel
+  - `makeNoDataRgba` - create a no data RGB pixel
+- **transparency**
+  - `addAlpha` - add an alpha transparency channel
+  - `isHidden` - check if an RGBA pixel is transparent
+  - `setHidden` - mutates input pixel, setting alpha channel to visible
+  - `showRGBA` - make RGBA visible
+
 ## core assumptions and constraints
 An RGB pixel has these assumed properties:
 - array of 3 numbers between zero and 255
