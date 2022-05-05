@@ -10,7 +10,7 @@
 
 ## functions
 - **conversion**
-  - `rawToRgb` - convert a raw unprocessed pixel value to RGBA
+  - [`rawToRgb`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/raw-to-rgb) - convert a raw unprocessed pixel value to RGBA
   - `rawToRgba` - convert a raw unprocessed pixel value to RGB
   - `rgbToRgba` - convert from RGB to RGBA
   - `rgbaToRgb` - convert from RGBA to RGB
