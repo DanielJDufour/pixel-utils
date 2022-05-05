@@ -7,8 +7,13 @@
     "pixel-converter.js"
   ],
   "scripts": {
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:web",
+    "build:cjs": "npx babel --plugins @babel/plugin-transform-modules-commonjs --plugins @babel/plugin-proposal-export-namespace-from dist/esm --out-dir dist/cjs",
+    "build:esm": "npx babel --extensions \".ts\" --ignore '**/test.ts' --plugins @babel/plugin-proposal-export-namespace-from --presets @babel/preset-typescript src --out-dir dist/esm",
+    "build:web": "npx mkdirp ./dist/web && npx browserify ./dist/cjs/index.js > ./dist/web/bundle.js",
+    "clean": "npx rimraf dist",
     "format": "npx prettier --arrow-parens=avoid --print-width=240 --trailing-comma=none --write *.js",
-    "test": "node -r esm test.js"
+    "test": "for f in src/*/test.ts; do echo \"\nrunning $f\" && npx ts-node $f; done"
   },
   "repository": {
     "type": "git",
@@ -27,7 +32,18 @@
   },
   "homepage": "https://github.com/DanielJDufour/pixel-converters#readme",
   "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/plugin-proposal-export-namespace-from": "^7.16.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "@babel/plugin-transform-typescript": "^7.16.8",
+    "@babel/preset-typescript": "^7.16.7",
+    "doctrine": "^3.0.0",
     "esm": "^3.2.25",
-    "flug": "^2.2.0"
+    "flug": "^2.2.0",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "quick-scale": "^0.0.3"
   }
 }

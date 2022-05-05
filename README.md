@@ -1,14 +1,18 @@
 __beta version__
-# pixel-converters:
+# pixel-utils:
+> Utility Functions for Pixels
+
 Simple conversion of pixels to RGB and RGBA, including automatic scaling and no data values.
 
 ## features
-- immutable
+- immutable and immutable options
+- no data values
+- range flipping
 
 ## core assumptions and constraints
 An RGB pixel has these assumed properties:
 - array of 3 numbers between zero and 255
-- no data values represented by [0, 0, 0] or [255, 255, 255]
+- no data is represented by either black or white
 
 An RGBA pixel has these assumed properties:
 - array of 4 numbers between zero and 255
@@ -28,12 +32,19 @@ npm install pixel-converters
 ```
 
 ## functions
+- create_raw_to_rgb_function
+- create_raw_to_rgba_function
+- create_rgb_to_rgba_function
+- create_rgb_to_rgba_function
+
+
 - convert_raw_to_rgb
 - convert_raw_to_rgba
 - convert_rgb_to_rgba
 - convert_rgba_to_rgb
 - create_nodata_rgb
 - create_nodata_rgba
+- create_scale_function
 - has_no_data_value
 - hide_rgba
 - scale_number
@@ -68,6 +79,11 @@ convert_raw_to_rgb(pixel, [min], [max], old_no_data_value, 0);
 // this will push all the scaled pixel values down
 convert_raw_to_rgb(pixel, [min], [max], old_no_data_value, 255);
 [24, 24, 24]
+
+// if you want to flip your pixel values so that as the raw pixel value
+// increases the processed result gets darker, pass in true at the end of the params
+convert_raw_to_rgb(pixel, [min], [max], old_no_data_value, 255, true);
+[24, 24, 24]
 ```
 
 ### convert_raw_to_rgba
@@ -90,5 +106,13 @@ convert_raw_to_rgba(pixel, [min], [max], old_no_data_value, 255);
 [24, 24, 24, 255]
 ```
 
+
+
 ### more documentation coming soon
 as time permits...
+
+### alternatives:
+- https://github.com/d3/d3-scale
+- https://github.com/AoDev/scale-number
+- https://github.com/javiercejudo/rescale-util
+- https://github.com/javiercejudo/linear-converter
