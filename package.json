@@ -9,7 +9,7 @@
   "scripts": {
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:web",
     "build:cjs": "npx babel --plugins @babel/plugin-transform-modules-commonjs --plugins @babel/plugin-proposal-export-namespace-from dist/esm --out-dir dist/cjs",
-    "build:esm": "npx babel --extensions \".ts\" --ignore '**/test.ts' --plugins @babel/plugin-proposal-export-namespace-from --presets @babel/preset-typescript src --out-dir dist/esm",
+    "build:esm": "npx babel --extensions \".ts\" --ignore '**/test.ts' --ignore '**/index.md' --plugins @babel/plugin-proposal-export-namespace-from --presets @babel/preset-typescript src --out-dir dist/esm",
     "build:web": "npx mkdirp ./dist/web && npx browserify ./dist/cjs/index.js > ./dist/web/bundle.js",
     "clean": "npx rimraf dist",
     "format": "npx prettier --arrow-parens=avoid --print-width=240 --trailing-comma=none --write *.js",
