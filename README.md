@@ -2,8 +2,8 @@
 > Utility Functions for Pixels
 
 ## features
-- immutable and immutable options
 - no data values
+- optional mutability for fast memory-preserving operations
 - optimized for speed
 - range flipping
 - simple conversion between RGB and RGBA
@@ -22,6 +22,7 @@
   - [`isHidden`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/is-hidden) - check if an RGBA pixel is transparent
   - `setHidden` - mutates input pixel, setting alpha channel to visible
   - `showRGBA` - make RGBA visible
+- **[and many more](https://github.com/DanielJDufour/pxutil/tree/main/src)**
 
 ## core assumptions and constraints
 An RGB pixel has these assumed properties:
@@ -42,5 +43,5 @@ A raw (unscaled) pixel value has these assumed properties:
 
 ## install
 ```bash
-npm install pixel-converters
+npm install pxutil
 ```
