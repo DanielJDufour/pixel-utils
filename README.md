@@ -21,8 +21,8 @@ npm install pixel-utils
 
 ## functions
 - **conversion**
-  - [`rawToRgb`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/raw-to-rgb) - convert a raw unprocessed pixel value to RGBA
-  - `rawToRgba` - convert a raw unprocessed pixel value to RGB
+  - [`rawToRgb`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/raw-to-rgb) - convert a raw unprocessed pixel value to RGB
+  - [`rawToRgba`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/raw-to-rgba) - convert a raw unprocessed pixel value to RGBA
   - `rgbToRgba` - convert from RGB to RGBA
   - `rgbaToRgb` - convert from RGBA to RGB
 - **no data**
