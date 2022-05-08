@@ -22,7 +22,7 @@
   - [`isHidden`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/is-hidden) - check if an RGBA pixel is transparent
   - `setHidden` - mutates input pixel, setting alpha channel to visible
   - `showRGBA` - make RGBA visible
-- **[and many more](https://github.com/DanielJDufour/pxutil/tree/main/src)**
+- **[and many more](https://github.com/DanielJDufour/pixel-utils/tree/main/src)**
 
 ## core assumptions and constraints
 An RGB pixel has these assumed properties:

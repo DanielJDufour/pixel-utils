@@ -7,7 +7,7 @@ are looking to save your pixel to a JPG file, because JPG doesn't support a tran
 
 ## usage
 ```js
-import { rawToRgb } from "pxutil";
+import { rawToRgb } from "pixel-utils";
 
 // example is a pixel in a Landsat 8 scene
 const pixel = [5901];

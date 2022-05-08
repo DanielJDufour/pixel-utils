@@ -8,7 +8,7 @@ representation that supports an alpha band (transparency channel).
 
 ## usage
 ```js
-import { rawToRgba } from "pxutil";
+import { rawToRgba } from "pixel-utils";
 
 // using same pixel as above
 rawToRgba({ ranges, old_no_data_value })(pixel);
