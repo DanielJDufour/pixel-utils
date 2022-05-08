@@ -35,7 +35,9 @@
     "raw-to-rgb/convert-triple.ts",
     "raw-to-rgba/index.ts",
     "raw-to-rgba/convert-double.ts",
+    "raw-to-rgba/convert-double-all.ts",
     "raw-to-rgba/convert-multiband.ts",
+    "raw-to-rgba/convert-multiband-all.ts",
     "raw-to-rgba/convert-single.ts",
     "rgb-to-rgba/index.ts",
     "rgb-to-rgba/quickly-convert.ts",
@@ -90,6 +92,6 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
-    "quick-scale": "^0.0.3"
+    "quick-scale": "^0.1.0"
   }
 }

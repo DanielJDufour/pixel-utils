@@ -12,6 +12,7 @@ import rawToRgba from "./index";
 const scale_uint16 = n => Math.round((n * 255) / Math.pow(2, 16));
 
 const RANGE_U16: Range = [0, Math.pow(2, 16)];
+const RANGE_U16_2X = range(2).map(() => RANGE_U16);
 const RANGE_U16_5X = range(5).map(() => RANGE_U16);
 
 test("convert one-band pixel to RGBA", ({ eq }) => {
@@ -45,4 +46,17 @@ test("create raw to rgba processing function", ({ eq }) => {
   eq(rawToRgba({ ranges: RANGE_U16_5X, new_no_data_value: 0 })([1275, 2314, 4311, 52311, 542622]), [6, 10, 18, 255]);
   eq(rawToRgba({ ranges: RANGE_U16_5X, old_no_data_value: 65536, new_no_data_value: 255 })([1275, 2314, 65536, 52311, 542622]), [5, 9, 255, 0]);
   eq(rawToRgba({ ranges: RANGE_U16_5X, old_no_data_value: 65536, new_no_data_value: null })([1275, 2314, 65536, 52311, 542622]), [5, 9, null, 0]);
+});
+
+test("no data strategy", ({ eq }) => {
+  const pixel = [1275, 2314, 4311, 52311, 542622];
+  // default, scale some
+  eq(rawToRgba({ ranges: RANGE_U16_5X, old_no_data_value: 1275, new_no_data_value: 0 })(pixel), [0, 10, 18, 0]);
+  eq(rawToRgba({ ranges: RANGE_U16_5X, old_no_data_value: 1275, new_no_data_value: 0, no_data_strategy: "partial" })(pixel), [0, 10, 18, 0]);
+  eq(rawToRgba({ ranges: RANGE_U16_5X, old_no_data_value: 1275, new_no_data_value: 0, no_data_strategy: "all" })(pixel), [0, 0, 0, 0]);
+
+  const two_band_pixel = [1275, 2314];
+  eq(rawToRgba({ ranges: RANGE_U16_2X, old_no_data_value: 1275, new_no_data_value: 0 })(two_band_pixel), [0, 10, 0, 0]);
+  eq(rawToRgba({ ranges: RANGE_U16_2X, old_no_data_value: 1275, new_no_data_value: 0, no_data_strategy: "partial" })(two_band_pixel), [0, 10, 0, 0]);
+  eq(rawToRgba({ ranges: RANGE_U16_2X, old_no_data_value: 1275, new_no_data_value: 0, no_data_strategy: "all" })(two_band_pixel), [0, 0, 0, 0]);
 });
