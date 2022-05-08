@@ -1,5 +1,5 @@
-# pxutil
-> Utility Functions for Pixels
+# pixel-utils
+> Minimalist Utility Functions for Pixels
 
 ## features
 - no data values
@@ -43,5 +43,5 @@ A raw (unscaled) pixel value has these assumed properties:
 
 ## install
 ```bash
-npm install pxutil
+npm install pixel-utils
 ```
