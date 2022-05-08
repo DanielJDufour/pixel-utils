@@ -1,6 +1,6 @@
 import * as test from "flug";
 
-import { Range } from '../types';
+import { Range } from "../types";
 
 import range from "../range";
 
@@ -9,7 +9,7 @@ import convertDouble from "./convert-double";
 import convertMultiband from "./convert-multiband";
 import rawToRgba from "./index";
 
-const scale_uint16 = n => Math.round(n * 255 / Math.pow(2, 16));
+const scale_uint16 = n => Math.round((n * 255) / Math.pow(2, 16));
 
 const RANGE_U16: Range = [0, Math.pow(2, 16)];
 const RANGE_U16_5X = range(5).map(() => RANGE_U16);
@@ -35,14 +35,14 @@ test("convert 3+ band pixel to rgba", ({ eq }) => {
 });
 
 test("create raw to rgba processing function", ({ eq }) => {
-  eq(rawToRgba({ ranges: [RANGE_U16] })([1234]), [5, 5, 5, 255]); 
-  eq(rawToRgba({ ranges: [RANGE_U16] })([65536]), [255, 255, 255, 255]); 
+  eq(rawToRgba({ ranges: [RANGE_U16] })([1234]), [5, 5, 5, 255]);
+  eq(rawToRgba({ ranges: [RANGE_U16] })([65536]), [255, 255, 255, 255]);
   eq(rawToRgba({ ranges: [RANGE_U16], new_no_data_value: 255 })([65536]), [254, 254, 254, 255]);
   eq(rawToRgba({ ranges: [RANGE_U16], new_no_data_value: 0 })([65536]), [255, 255, 255, 255]);
   eq(rawToRgba({ ranges: [RANGE_U16], new_no_data_value: 0 })([0]), [1, 1, 1, 255]);
   eq(rawToRgba({ ranges: [RANGE_U16], new_no_data_value: 255, flip: true })([0]), [254, 254, 254, 255]);
   eq(rawToRgba({ ranges: [RANGE_U16], new_no_data_value: 0, flip: true })([0]), [255, 255, 255, 255]);
-  eq(rawToRgba({ ranges: RANGE_U16_5X, new_no_data_value: 0 })([1275, 2314, 4311, 52311, 542622]), [6,10,18,255]);
-  eq(rawToRgba({ ranges: RANGE_U16_5X, old_no_data_value: 65536, new_no_data_value: 255 })([1275, 2314, 65536, 52311, 542622]), [5,9,255,0]);
-  eq(rawToRgba({ ranges: RANGE_U16_5X, old_no_data_value: 65536, new_no_data_value: null })([1275, 2314, 65536, 52311, 542622]), [5,9,null,0]);
+  eq(rawToRgba({ ranges: RANGE_U16_5X, new_no_data_value: 0 })([1275, 2314, 4311, 52311, 542622]), [6, 10, 18, 255]);
+  eq(rawToRgba({ ranges: RANGE_U16_5X, old_no_data_value: 65536, new_no_data_value: 255 })([1275, 2314, 65536, 52311, 542622]), [5, 9, 255, 0]);
+  eq(rawToRgba({ ranges: RANGE_U16_5X, old_no_data_value: 65536, new_no_data_value: null })([1275, 2314, 65536, 52311, 542622]), [5, 9, null, 0]);
 });

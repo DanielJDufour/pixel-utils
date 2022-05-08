@@ -6,15 +6,14 @@ import quickly_convert from "./quickly-convert";
 
 import { NoDataValue, RGB, CleanRGBA } from "../types";
 
-
-export default function rgbToRgba ({
+export default function rgbToRgba({
   old_no_data_value,
   new_no_data_value,
   safe = true
 }: {
-  old_no_data_value?: NoDataValue,
-  new_no_data_value?: NoDataValue,
-  safe?: boolean
+  old_no_data_value?: NoDataValue;
+  new_no_data_value?: NoDataValue;
+  safe?: boolean;
 } = {}): (px: RGB) => CleanRGBA {
   if (typeof old_no_data_value === "number") {
     if (safe) {

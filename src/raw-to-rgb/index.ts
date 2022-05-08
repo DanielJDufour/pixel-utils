@@ -20,22 +20,19 @@ export default function rawToRgb({
   old_no_data_value,
   round = true
 }: {
-  ranges: Range[],
-  flip?: boolean,
-  new_no_data_value?: NoDataValue,
-  no_range_value?: PixelValue,
-  no_range_value_strategy?: NoRangeValueStrategy,
-  old_no_data_value?: number,
-  round?: boolean
+  ranges: Range[];
+  flip?: boolean;
+  new_no_data_value?: NoDataValue;
+  no_range_value?: PixelValue;
+  no_range_value_strategy?: NoRangeValueStrategy;
+  old_no_data_value?: number;
+  round?: boolean;
 }): (px: RawPixel) => RGB {
   const nbands = ranges.length;
 
   const no_data_pixel = makeNoDataRGB(new_no_data_value);
 
-  const new_range: Range = [
-    0 === new_no_data_value ? 1 : 0,
-    255 === new_no_data_value ? 254 : 255
-  ];
+  const new_range: Range = [0 === new_no_data_value ? 1 : 0, 255 === new_no_data_value ? 254 : 255];
 
   const options = {
     no_data_value: new_no_data_value,

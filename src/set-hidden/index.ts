@@ -1,7 +1,7 @@
-import { RGBA } from "../types";
+import { AnyRGBA, CleanRGBA } from "../types";
 
 // make a given rgba value transparent
-export function setHidden(pixel: RGBA): RGBA {
+export default function setHidden(pixel: AnyRGBA): CleanRGBA {
   pixel[3] = 0;
-  return pixel;
-};
+  return (pixel as unknown) as CleanRGBA;
+}

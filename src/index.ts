@@ -1,4 +1,17 @@
+export * as addAlpha from "./add-alpha";
+export * as hasNoData from "./has-no-data";
+export * as hideRgba from "./hide-rgba";
+export * as isHidden from "./is-hidden";
+export * as isNoData from "./is-no-data";
+export * as makeNoDataRgb from "./make-no-data-rgb";
+export * as makeNoDataRgba from "./make-no-data-rgba";
+export * as popAlpha from "./pop-alpha";
+export * as range from "./range";
 export * as rawToRgb from "./raw-to-rgb";
 export * as rawToRgba from "./raw-to-rgba";
 export * as rgbToRgba from "./rgb-to-rgba";
 export * as rgbaToRgb from "./rgba-to-rgb";
+export * as setHidden from "./set-hidden";
+export * as setVisible from "./set-visible";
+export * as showRgba from "./show-rgba";
+export * as sliceAlpha from "./slice-alpha";

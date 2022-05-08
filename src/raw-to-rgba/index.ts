@@ -16,19 +16,16 @@ export default function rawToRgba({
   no_range_value_strategy,
   old_no_data_value
 }: {
-  ranges: Range[],
-  flip?: boolean,
-  new_no_data_value?: NoDataValue,
-  no_range_value?: PixelValue,
-  no_range_value_strategy?: "highest" | "middle" | "lowest",
-  old_no_data_value?: RawNoDataValue,
+  ranges: Range[];
+  flip?: boolean;
+  new_no_data_value?: NoDataValue;
+  no_range_value?: PixelValue;
+  no_range_value_strategy?: "highest" | "middle" | "lowest";
+  old_no_data_value?: RawNoDataValue;
 }): (px: RawPixel) => CleanRGBA {
   const nbands = ranges.length;
 
-  const new_range: Range = [
-    0 === new_no_data_value ? 1 : 0,
-    255 === new_no_data_value ? 254 : 255
-  ];
+  const new_range: Range = [0 === new_no_data_value ? 1 : 0, 255 === new_no_data_value ? 254 : 255];
 
   const options = {
     no_data_value: new_no_data_value,

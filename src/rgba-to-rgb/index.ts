@@ -7,20 +7,17 @@ import { NoDataValue, RGB, RawRGBA } from "../types";
 import safely_convert from "./safely-convert";
 import quickly_convert from "./quickly-convert";
 
-
 // converting from RGBA to RGB
 // where we no longer have an alpha value
 // assuming pixel is already scaled
 // assume no data pixels have zero transparency
-export default function rgbaToRgb ({
+export default function rgbaToRgb({
   new_no_data_value,
-  safe=true
+  safe = true
 }: {
-  new_no_data_value?: NoDataValue,
-  safe?: boolean
-} = {
-
-}): (px: RawRGBA) => RGB {
+  new_no_data_value?: NoDataValue;
+  safe?: boolean;
+} = {}): (px: RawRGBA) => RGB {
   if (safe) {
     if (typeof new_no_data_value === "number") {
       return safely_convert.bind(null, new_no_data_value);
@@ -35,4 +32,3 @@ export default function rgbaToRgb ({
     }
   }
 }
-

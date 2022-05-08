@@ -7,5 +7,5 @@ import type { RGB, VisibleRGBA } from "../types";
  */
 export default function pushAlpha(pixel: RGB): VisibleRGBA {
   pixel.push(255);
-  return pixel as unknown as VisibleRGBA;
+  return (pixel as unknown) as VisibleRGBA;
 }

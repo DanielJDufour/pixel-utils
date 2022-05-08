@@ -7,6 +7,6 @@ import type { RGB, RawRGBA } from "../types";
  * @param {RGBA} pixel - an RGBA
  * @returns {RGBA} an RGBA pixel as an array of 4 numbers
  */
-export default function sliceAlpha (pixel: RawRGBA): RGB {
+export default function sliceAlpha(pixel: RawRGBA): RGB {
   return pixel.slice(0, 3) as RGB;
 }
