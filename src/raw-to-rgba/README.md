@@ -10,7 +10,13 @@ representation that supports an alpha band (transparency channel).
 ```js
 import { rawToRgba } from "pixel-utils";
 
-// using same pixel as above
+const pixel = [5901];
+const min = 0;
+const max = 62196;
+const range = [0, 62196];
+const ranges = [ range ];
+const old_no_data_value = 65536;
+
 rawToRgba({ ranges, old_no_data_value })(pixel);
 [24, 24, 24, 255]
 
@@ -21,8 +27,6 @@ rawToRgba({ ranges, old_no_data_value, new_no_data_value: 0 })(pixel);
 // using same pixel as above, but reserving 255 for the new no data value
 rawToRgba({ ranges, old_no_data_value, new_no_data_value: 255 })(pixel);
 [24, 24, 24, 255]
-
-
 ```
 
 ### no_data_strategy
@@ -31,6 +35,6 @@ if any band is no data, set no_data_strategy to "all".  The default is "partial"
 ```js
 // if any no data value is encountered
 // set red, green, and blue to the no data value
-rawToRgba({ ranges, old_no_data_value, new_no_data_value: 0, no_data_strategy: "all" })(pixel);
+rawToRgba({ ranges, old_no_data_value: -99, new_no_data_value: 0, no_data_strategy: "all" })([5901, -99, 2341]);
 [0, 0, 0, 0]
 ```
