@@ -55,10 +55,11 @@
     "build:web": "npx mkdirp ./dist/web && npx browserify ./dist/cjs/bundle.js > ./dist/web/pixel-utils.js",
     "clean": "npx rimraf dist",
     "format": "npx prettier --arrow-parens=avoid --print-width=240 --trailing-comma=none --write ./src/*.ts ./src/*/*.ts",
+    "test": "npm run test:src && npm run test:cjs && npm run test:esm && npm run test:web",
     "test:src": "for f in src/*/test.ts; do echo \"\nrunning $f\" && npx ts-node $f; done",
-    "test:cjs": "node -r ./dist/cjs/index.js",
-    "test:esm": "node -r esm -r ./dist/esm/index.js",
-    "test:web": "node -r ./dist/web/pixel-utils.js"
+    "test:cjs": "node -r ./dist/cjs/index.js -e ''",
+    "test:esm": "node -r esm -r ./dist/esm/index.js -e ''",
+    "test:web": "node -r ./dist/web/pixel-utils.js -e ''"
   },
   "repository": {
     "type": "git",
