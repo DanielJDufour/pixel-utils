@@ -14,6 +14,11 @@
 - support for CommonJS and ES Modules
 - typescript
 
+## install
+```bash
+npm install pixel-utils
+```
+
 ## functions
 - **conversion**
   - [`rawToRgb`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/raw-to-rgb) - convert a raw unprocessed pixel value to RGBA
@@ -47,7 +52,3 @@ A raw (unscaled) pixel value has these assumed properties:
 - no data value must be the same for each band (we don't love this, but it's a common constraint)
 - there is no transparency channel/band (we may work to remove this constraint)
 
-## install
-```bash
-npm install pixel-utils
-```
