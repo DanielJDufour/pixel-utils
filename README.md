@@ -12,6 +12,7 @@
 - range flipping
 - simple conversion between RGB and RGBA
 - support for CommonJS and ES Modules
+- typescript
 
 ## functions
 - **conversion**
