@@ -1,3 +1,7 @@
+⚠️ This library is currently in beta, so the function signatures are subject to change.
+
+---
+
 # pixel-utils
 > Minimalist Utility Functions for Pixels
 
