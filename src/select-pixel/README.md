@@ -10,7 +10,7 @@ a pixel by row and column regardless of the array layout of the source data.
 import { selectPixel } from "pixel-utils";
 
 // example is data from a Landsat 8 scene
-// where each band is it's own array
+// where each band is its own array
 const height = 1231;
 const width = 1232;
 
