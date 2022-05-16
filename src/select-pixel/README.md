@@ -9,18 +9,8 @@ a pixel by row and column regardless of the array layout of the source data.
 ```js
 import { selectPixel } from "pixel-utils";
 
-// example is a pixel in a Landsat 8 scene
-const pixel = [5901];
-const min = 0;
-const max = 62196;
-const range = [0, 62196];
-const ranges = [ range ];
-const old_no_data_value = 65536;
-const convert = rawToRgb({ ranges, old_no_data_value });
-convert(pixel);
-[24, 24, 24]
-
-
+// example is data from a Landsat 8 scene
+// where each band is it's own array
 const height = 1231;
 const width = 1232;
 
