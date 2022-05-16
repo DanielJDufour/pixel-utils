@@ -23,17 +23,17 @@ convert(pixel);
 // if you want to hold zero as the new no data value
 // in other words, a no data pixel will be [0, 0, 0]
 // because zero is taken, it will push all the scaled values up
-rawToRgb({ ranges, old_no_data_value, new_no_data_value: 0 });
+rawToRgb({ ranges, old_no_data_value, new_no_data_value: 0 })(pixel);
 [24, 24, 24]
 
 // if you want your no data pixel to be pure white ([255, 255, 255])
 // you can set the new no data value to 255
 // this will push all the scaled pixel values down
-rawToRgb({ ranges, old_no_data_value, new_no_data_value: 255 });
+rawToRgb({ ranges, old_no_data_value, new_no_data_value: 255 })(pixel);
 [24, 24, 24]
 
 // if you want to flip your pixel values so that as the raw pixel value
 // increases the processed result gets darker, pass in true at the end of the params
-rawToRgb({ ranges, flip: true });
+rawToRgb({ ranges, flip: true })(pixel);
 [24, 24, 24]
 ```
