@@ -45,6 +45,14 @@
     "src/rgba-to-rgb/index.ts",
     "src/rgba-to-rgb/quickly-convert.ts",
     "src/rgba-to-rgb/safely-convert.ts",
+    "src/select-pixel/index.ts",
+    "src/select-pixel/select-pixel-from-b-r-c.ts",
+    "src/select-pixel/select-pixel-from-b-rc.ts",
+    "src/select-pixel/select-pixel-from-bcr.ts",
+    "src/select-pixel/select-pixel-from-r-c-b.ts",
+    "src/select-pixel/select-pixel-from-r-cb.ts",
+    "src/select-pixel/select-pixel-from-rc-b.ts",
+    "src/select-pixel/select-pixel-from-rcb.ts",
     "src/set-hidden/index.ts",
     "src/set-visible/index.ts",
     "src/show-rgba/index.ts",
@@ -89,7 +97,9 @@
     "doctrine": "^3.0.0",
     "esm": "^3.2.25",
     "flug": "^2.2.0",
-    "typescript": "^4.6.4"
+    "readim": "^0.0.2",
+    "typescript": "^4.6.4",
+    "xdim": "^1.5.2"
   },
   "dependencies": {
     "quick-scale": "^0.1.0"
