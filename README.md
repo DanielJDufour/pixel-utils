@@ -23,11 +23,13 @@ npm install pixel-utils
 - **conversion**
   - [`rawToRgb`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/raw-to-rgb) - convert a raw unprocessed pixel value to RGB
   - [`rawToRgba`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/raw-to-rgba) - convert a raw unprocessed pixel value to RGBA
-  - `rgbToRgba` - convert from RGB to RGBA
-  - `rgbaToRgb` - convert from RGBA to RGB
+  - [`rgbToRgba`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/rgb-to-rgba) - convert from RGB to RGBA
+  - [`rgbaToRgb`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/rgba-to-rgb) - convert from RGBA to RGB
 - **no data**
   - `makeNoDataRgb` - create a no data RGB pixel
   - `makeNoDataRgba` - create a no data RGB pixel
+- **selection**
+  - [`select`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/select-pixel) - select a pixel from image data of arbitrary dimensions
 - **transparency**
   - `addAlpha` - add an alpha transparency channel
   - [`isHidden`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/is-hidden) - check if an RGBA pixel is transparent
