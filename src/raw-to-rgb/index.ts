@@ -9,11 +9,12 @@ import convertDouble from "./convert-double";
 import convertTriple from "./convert-triple";
 import convertMulti from "./convert-many";
 
-import type { NoDataValue, RawPixel, PixelValue, Range, RGB } from "../types";
+import type { NoDataValue, NullableRGB, RawPixel, Pixel, PixelValue, Range, RGB } from "../types";
 
 export default function rawToRgb({
   ranges,
   flip,
+  new_no_data_pixel,
   new_no_data_value,
   no_range_value,
   no_range_value_strategy,
@@ -22,6 +23,7 @@ export default function rawToRgb({
 }: {
   ranges: Range[];
   flip?: boolean;
+  new_no_data_pixel?: NullableRGB;
   new_no_data_value?: NoDataValue;
   no_range_value?: PixelValue;
   no_range_value_strategy?: NoRangeValueStrategy;
@@ -30,12 +32,17 @@ export default function rawToRgb({
 }): (px: RawPixel) => RGB {
   const nbands = ranges.length;
 
-  const no_data_pixel = makeNoDataRGB(new_no_data_value);
+  if (new_no_data_pixel && new_no_data_value) {
+    throw new Error("[pixel-utils/raw-to-rgb] can't specify both new_no_data_pixel and new_no_data_value");
+  }
+
+  if (new_no_data_pixel === undefined || new_no_data_pixel === null) {
+    new_no_data_pixel = makeNoDataRGB(new_no_data_value || null);
+  }
 
   const new_range: Range = [0 === new_no_data_value ? 1 : 0, 255 === new_no_data_value ? 254 : 255];
 
   const options = {
-    no_data_value: new_no_data_value,
     flip,
     no_range_value,
     no_range_value_strategy,
@@ -45,12 +52,18 @@ export default function rawToRgb({
   const scalefns = ranges.slice(0, 3).map(rng => createScaleFunction(rng, new_range, options));
 
   if (nbands === 1) {
-    return convertSingle.bind(null, old_no_data_value, no_data_pixel, ...scalefns);
+    // @ts-ignore
+    return convertSingle.bind(null, old_no_data_value, new_no_data_pixel, ...scalefns);
   } else if (nbands === 2) {
-    return convertDouble.bind(null, old_no_data_value, no_data_pixel, ...scalefns);
+    // @ts-ignore
+    return convertDouble.bind(null, old_no_data_value, new_no_data_pixel, ...scalefns);
   } else if (nbands === 3) {
-    return convertTriple.bind(null, old_no_data_value, no_data_pixel, ...scalefns);
+    // @ts-ignore
+    return convertTriple.bind(null, old_no_data_value, new_no_data_pixel, ...scalefns);
   } else if (nbands >= 4) {
-    return convertMulti.bind(null, old_no_data_value, no_data_pixel, ...scalefns);
+    // @ts-ignore
+    return convertMulti.bind(null, old_no_data_value, new_no_data_pixel, ...scalefns);
+  } else {
+    throw new Error("[pixel-utils/raw-to-rgb] invalid number of bands: " + nbands);
   }
 }

@@ -36,4 +36,9 @@ rawToRgb({ ranges, old_no_data_value, new_no_data_value: 255 })(pixel);
 // increases the processed result gets darker, pass in true at the end of the params
 rawToRgb({ ranges, flip: true })(pixel);
 [24, 24, 24]
+
+// if you want to specify a no data color (instead of a singular value)
+// in this case, we are specifying red as the no data color for the output
+rawToRgb({ ranges, old_no_data_value: 0, new_no_data_pixel: [255, 0, 0] })(0);
+[255, 0, 0]
 ```

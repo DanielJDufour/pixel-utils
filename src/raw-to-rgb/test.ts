@@ -1,4 +1,4 @@
-import * as test from "flug";
+import test from "flug";
 
 import convert_raw_one_band_pixel_to_rgb from "./convert-single";
 import convert_raw_two_band_pixel_to_rgb from "./convert-double";
@@ -6,21 +6,24 @@ import convert_raw_three_band_pixel_to_rgb from "./convert-triple";
 import convert_raw_many_band_pixel_to_rgb from "./convert-many";
 import rawToRgb from "./index";
 
-const scale_uint16 = n => Math.round((n * 255) / Math.pow(2, 16));
+const scale_uint16 = (n: number) => Math.round((n * 255) / Math.pow(2, 16));
 
 test("convert_one_band_pixel_to_rgb", ({ eq }) => {
+  // @ts-ignore
   const fn = convert_raw_one_band_pixel_to_rgb.bind(null, -99, [0, 0, 0], scale_uint16);
   eq(fn([24511]), [95, 95, 95]);
   eq(fn([-99]), [0, 0, 0]);
 });
 
 test("convert_two_band_pixel_to_rgb", ({ eq }) => {
+  // @ts-ignore
   const fn = convert_raw_two_band_pixel_to_rgb.bind(null, -99, [0, 0, 0], scale_uint16, scale_uint16);
   eq(fn([24511, 2462]), [95, 10, 0]);
   eq(fn([-99]), [0, 0, 0]);
 });
 
 test("convert_three_band_pixel_to_rgb", ({ eq }) => {
+  // @ts-ignore
   const fn = convert_raw_three_band_pixel_to_rgb.bind(null, -99, [0, 0, 0], scale_uint16, scale_uint16, scale_uint16);
   eq(fn([24511, 2462, 12386]), [95, 10, 48]);
   eq(fn([-99, 2462, 12386]), [0, 0, 0]);
@@ -28,6 +31,7 @@ test("convert_three_band_pixel_to_rgb", ({ eq }) => {
 });
 
 test("convert_many_band_pixel_to_rgb", ({ eq }) => {
+  // @ts-ignore
   const fn = convert_raw_many_band_pixel_to_rgb.bind(null, -99, [0, 0, 0], scale_uint16, scale_uint16, scale_uint16);
   eq(fn([24511, 2462, 12386, 24511, 2462, 12386]), [95, 10, 48]);
   eq(fn([-99, 2462, 12386, 24511, 2462, 12386]), [0, 0, 0]);
@@ -106,4 +110,12 @@ test("create_raw_to_rgb", ({ eq }) => {
     })([1275, 2314]),
     [249, 254, 0]
   );
+});
+
+test("no data pixel", ({ eq }) => {
+  const new_no_data_pixel: [255, 0, 0] = [255, 0, 0]; // red
+  eq(rawToRgb({ ranges: [[0, 65536]], new_no_data_pixel })([65536]), [255, 255, 255]);
+  eq(rawToRgb({ ranges: [[0, 65536]], new_no_data_pixel, old_no_data_value: 0 })([0]), [255, 0, 0]);
+  eq(rawToRgb({ ranges: [[0, 65536]], new_no_data_pixel, old_no_data_value: 0 })([65536]), [255, 255, 255]);
+  eq(rawToRgb({ ranges: [[0, 65536]], new_no_data_pixel })([0]), [0, 0, 0]);
 });
