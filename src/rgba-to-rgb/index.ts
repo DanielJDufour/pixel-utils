@@ -20,12 +20,14 @@ export default function rgbaToRgb({
 } = {}): (px: RawRGBA) => RGB {
   if (safe) {
     if (typeof new_no_data_value === "number") {
+      // @ts-ignore
       return safely_convert.bind(null, new_no_data_value);
     } else {
       return slice_alpha;
     }
   } else {
     if (typeof new_no_data_value === "number") {
+      // @ts-ignore
       return quickly_convert.bind(null, make_no_data_rgb(new_no_data_value));
     } else {
       return pop_alpha;

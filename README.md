@@ -28,13 +28,15 @@ npm install pixel-utils
 - **no data**
   - `makeNoDataRgb` - create a no data RGB pixel
   - `makeNoDataRgba` - create a no data RGB pixel
+- **iteration**
+  - [`eachPixel`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/each-pixel) - call a callback for each pixel
 - **selection**
   - [`select`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/select-pixel) - select a pixel from image data of arbitrary dimensions
 - **transparency**
-  - `addAlpha` - add an alpha transparency channel
+  - [`addAlpha`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/add-alpha) - add an alpha transparency channel
   - [`isHidden`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/is-hidden) - check if an RGBA pixel is transparent
-  - `setHidden` - mutates input pixel, setting alpha channel to visible
-  - `showRGBA` - make RGBA visible
+  - [`setHidden`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/set-hidden) - mutates input pixel, setting alpha channel to visible
+  - [`showRGBA`](https://github.com/DanielJDufour/pixel-converters/tree/main/src/show-rgba) - make RGBA visible
 - **[and many more](https://github.com/DanielJDufour/pixel-utils/tree/main/src)**
 
 ## core assumptions and constraints
@@ -54,3 +56,8 @@ A raw (unscaled) pixel value has these assumed properties:
 - no data value must be the same for each band (we don't love this, but it's a common constraint)
 - there is no transparency channel/band (we may work to remove this constraint)
 
+## comparison
+There are several other pixel manipulation libraries, including [p5js](https://p5js.org/) and [fabricjs](http://fabricjs.com/), 
+however pixel-utils provides some unique features not found in other libraries:
+- raw image data support: most (if not all) alternatives assume that an image is a 8-bit 0-255 RGBA data
+- arbitrary image layout support: most (if not all) alternatives assume that your data is in a flat Uint8ClampedArray, but pixel-utils support all possible data layouts thanks to the [xdmin](https://github.com/danieljdufour/xdim) layout syntax.

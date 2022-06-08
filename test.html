@@ -3,6 +3,8 @@
   <head>
     <script src="./dist/web/pixel-utils.js"></script>
     <script src="https://unpkg.com/flug"></script>
+    <script src="https://unpkg.com/geotiff@2.0.5/dist-browser/geotiff.js"></script>
+    <script src="https://unpkg.com/to-canvas"></script>
   </head>
   <body>
     <script>
@@ -15,6 +17,88 @@
         const old_no_data_value = 65536;
         const convert = pixelUtils.rawToRgb({ ranges, old_no_data_value });
         eq(convert(pixel), [24, 24, 24]);
+      });
+
+      test("fit: single-band", async ({ eq }) => {
+        const tif = await GeoTIFF.fromUrl("./data/eu_pasture.tiff");
+        const im = await tif.getImage();
+        const data = await im.readRasters();
+        const old_no_data_value = -3.4028234663852886e+38;
+
+        const height = 638;
+        const width = 860;
+        const result = pixelUtils.fit({
+          data,
+          debug_level: 2,
+          depth: 1,
+          flip: false,
+          old_layout: "[band][row,column]",
+          height,
+          old_no_data_value,
+          new_no_data_value: 0,
+          ranges: [[0, 1]],
+          width
+        });
+
+        const canvas = await toCanvas({ data: result.data, height, width });
+        canvas.id = "eu_pasture.tiff";
+        canvas.style.background = "red";
+        canvas.style.width = "400px";
+        document.body.appendChild(canvas);
+      });
+
+      test("fit: single-band flip=true", async ({ eq }) => {
+        const tif = await GeoTIFF.fromUrl("./data/eu_pasture.tiff");
+        const im = await tif.getImage();
+        const data = await im.readRasters();
+        const old_no_data_value = -3.4028234663852886e+38;
+
+        console.log("data:", data);
+        const height = 638;
+        const width = 860;
+        const result = pixelUtils.fit({
+          data,
+          debug_level: 2,
+          depth: 1,
+          flip: true, // high is low and low is high
+          old_layout: "[band][row,column]",
+          height,
+          old_no_data_value,
+          new_no_data_value: 0,
+          ranges: [[0, 1]],
+          width
+        });
+
+        const canvas = await toCanvas({ data: result.data, height, width });
+        canvas.id = "eu_pasture.tiff flip:true";
+        canvas.style.background = "green";
+        canvas.style.width = "400px";
+        document.body.appendChild(canvas);
+      });
+
+      test("refit", async ({ eq }) => {
+        const tif = await GeoTIFF.fromUrl("./data/wildfires.tiff");
+        const im = await tif.getImage();
+        const data = await im.readRasters();
+        console.log("data:", data);
+        const height = 784;
+        const width = 1052;
+        const result = pixelUtils.fit({
+          data,
+          debug_level: 2,
+          depth: 1,
+          flip: true,
+          old_layout: "[band][row,column]",
+          height,
+          ranges: [[0, 255]],
+          width
+        });
+
+        const canvas = await toCanvas({ data: result.data, height, width });
+        canvas.id = "wildfires.tiff";
+        canvas.style.background = "blue";
+        canvas.style.width = "400px";
+        document.body.appendChild(canvas);
       });
     </script>
   </body>

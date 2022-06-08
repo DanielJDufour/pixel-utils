@@ -1,4 +1,4 @@
-export type PixelValue =
+export type UINT8 =
   | 0
   | 1
   | 2
@@ -255,17 +255,19 @@ export type PixelValue =
   | 253
   | 254
   | 255;
+
 export type Range = [number, number];
 export type RawValue = number;
 export type RawPixel = number[];
-export type Red = PixelValue;
-export type Green = PixelValue;
-export type Blue = PixelValue;
+export type Red = UINT8;
+export type Green = UINT8;
+export type Blue = UINT8;
 export type AlphaHidden = 0;
 export type AlphaVisible = 255;
 export type CleanAlpha = AlphaHidden | AlphaVisible;
-export type RandomAlpha = PixelValue;
+export type RandomAlpha = UINT8;
 export type RGB = [Red, Green, Blue];
+export type NullableRGB = NoDataPixel | RGB;
 export type RawRGBA = [Red, Green, Blue, RandomAlpha];
 export type CleanRGBA = [Red, Green, Blue, CleanAlpha];
 export type AnyRGBA = RawRGBA | CleanRGBA;
@@ -273,8 +275,28 @@ export type HiddenRGBA = [Red, Green, Blue, AlphaHidden | AlphaVisible];
 export type VisibleRGBA = [Red, Green, Blue, AlphaVisible];
 export type Pixel = RGB | AnyRGBA;
 export type RawNoDataValue = number;
-export type NoDataValue = 0 | 255;
-export type NoDataPixel = [0, 0, 0] | [255, 255, 255];
-export type NoDataPixelRGBA = [0, 0, 0, 0] | [255, 255, 255, 0];
-export type NoDataStrategy = "all" | "partial";
-export type ScaleFunction = (n: RawValue) => PixelValue;
+export type NoDataValue = null | 0 | 255;
+export type NoDataPixel = [0, 0, 0] | [255, 255, 255] | [null, null, null];
+// export type NoDataPixelRGBA = [0, 0, 0, 0] | [255, 255, 255, 0];
+export type NO_DATA_STRATEGY = "all" | "partial";
+export type ScaleFunction = (n: RawValue) => UINT8;
+
+// alpha values
+export type HIDDEN_ALPHA = 0;
+export type VISIBLE_ALPHA = 255;
+
+export type NO_DATA_VALUE = null | 0 | 255;
+export type NO_DATA_RGB = [null, null, null] | [0, 0, 0] | [255, 255, 255];
+export type NULLABLE_RGB = NULL_RGB | RGB;
+export type NO_DATA_RGBA = [null, null, null, 0] | [0, 0, 0, 0] | [255, 255, 255, 0];
+
+export type VALID_RGB = [UINT8, UINT8, UINT8];
+export type NULL_RGB = [null, null, null];
+
+export type VALID_RGBA = [UINT8, UINT8, UINT8, UINT8];
+export type HIDDEN_RGBA = [UINT8, UINT8, UINT8, 0];
+export type RAW_PIXEL = number[];
+// export type PIXEL = RAW_PIXEL | VALID_RGB | NULL_RGB |
+
+export type VISIBLE_RGBA = [Red, Green, Blue, VISIBLE_ALPHA];
+export type DIRTY_RGB = [null | UINT8, null | UINT8, null | UINT8];

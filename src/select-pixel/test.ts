@@ -1,6 +1,7 @@
 import { readFileSync } from "fs";
 
-import * as test from "flug";
+import test from "flug";
+// @ts-ignore
 import * as readim from "readim";
 import { transform } from "xdim";
 

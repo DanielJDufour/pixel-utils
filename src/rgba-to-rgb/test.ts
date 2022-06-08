@@ -1,4 +1,4 @@
-import * as test from "flug";
+import test from "flug";
 
 import rgbaToRgb from "./index";
 

@@ -1,4 +1,6 @@
-export default function select_brc(data, depth, height, width, r, c) {
+import type { RawPixel } from "../types";
+
+export default function select_brc(data: number[], depth: number, height: number, width: number, r: number, c: number): RawPixel {
   const pixel = [];
   const size = height * width;
   const i = r * width + c;

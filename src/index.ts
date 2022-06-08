@@ -1,4 +1,5 @@
 export * as addAlpha from "./add-alpha";
+export * as fit from "./fit";
 export * as hasNoData from "./has-no-data";
 export * as hideRgba from "./hide-rgba";
 export * as isHidden from "./is-hidden";

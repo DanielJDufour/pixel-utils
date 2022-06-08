@@ -1,4 +1,4 @@
-import * as test from "flug";
+import test from "flug";
 
 import { Range } from "../types";
 
@@ -9,25 +9,28 @@ import convertDouble from "./convert-double";
 import convertMultiband from "./convert-multiband";
 import rawToRgba from "./index";
 
-const scale_uint16 = n => Math.round((n * 255) / Math.pow(2, 16));
+const scale_uint16 = (n: number) => Math.round((n * 255) / Math.pow(2, 16));
 
 const RANGE_U16: Range = [0, Math.pow(2, 16)];
 const RANGE_U16_2X = range(2).map(() => RANGE_U16);
 const RANGE_U16_5X = range(5).map(() => RANGE_U16);
 
 test("convert one-band pixel to RGBA", ({ eq }) => {
+  // @ts-ignore
   const fn = convertSingle.bind(null, -99, [0, 0, 0, 0], scale_uint16);
   eq(fn([24511]), [95, 95, 95, 255]);
   eq(fn([-99]), [0, 0, 0, 0]);
 });
 
 test("convert two-band pixel to RGBA", ({ eq }) => {
+  // @ts-ignore
   const fn = convertDouble.bind(null, -99, 0, scale_uint16, scale_uint16);
   eq(fn([24511, 2462]), [95, 10, 0, 255]);
   eq(fn([-99, 2350]), [0, 9, 0, 0]);
 });
 
 test("convert 3+ band pixel to rgba", ({ eq }) => {
+  // @ts-ignore
   const fn = convertMultiband.bind(null, -99, 0, scale_uint16, scale_uint16, scale_uint16);
   eq(fn([24511, 2462, 12386]), [95, 10, 48, 255]);
   eq(fn([24511, 2462, 12386, 234, 43, 13123]), [95, 10, 48, 255]); // ignores extra bands

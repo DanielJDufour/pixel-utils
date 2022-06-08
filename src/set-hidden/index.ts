@@ -1,7 +1,7 @@
-import { AnyRGBA, CleanRGBA } from "../types";
-
 // make a given rgba value transparent
-export default function setHidden(pixel: AnyRGBA): CleanRGBA {
+export default function setHidden<R, G, B, A>(pixel: [R, G, B, A]): [R, G, B, 0] {
+  // @ts-ignore
   pixel[3] = 0;
-  return (pixel as unknown) as CleanRGBA;
+  // @ts-ignore
+  return pixel;
 }

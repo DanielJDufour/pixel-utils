@@ -9,7 +9,7 @@ import convertDouble from "./convert-double";
 import convertTriple from "./convert-triple";
 import convertMulti from "./convert-many";
 
-import type { NoDataValue, NullableRGB, RawPixel, Pixel, PixelValue, Range, RGB } from "../types";
+import type { NoDataValue, NullableRGB, RawPixel, Pixel, UINT8, Range, RGB } from "../types";
 
 export default function rawToRgb({
   ranges,
@@ -25,7 +25,7 @@ export default function rawToRgb({
   flip?: boolean;
   new_no_data_pixel?: NullableRGB;
   new_no_data_value?: NoDataValue;
-  no_range_value?: PixelValue;
+  no_range_value?: UINT8;
   no_range_value_strategy?: NoRangeValueStrategy;
   old_no_data_value?: number;
   round?: boolean;

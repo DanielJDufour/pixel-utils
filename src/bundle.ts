@@ -5,6 +5,7 @@ import isHidden from "./is-hidden";
 import isNoData from "./is-no-data";
 import makeNoDataRgb from "./make-no-data-rgb";
 import makeNoDataRgba from "./make-no-data-rgba";
+import fit from "./fit";
 import popAlpha from "./pop-alpha";
 import range from "./range";
 import rawToRgb from "./raw-to-rgb";
@@ -18,6 +19,7 @@ import sliceAlpha from "./slice-alpha";
 
 const pixelUtils = {
   addAlpha,
+  fit,
   hasNoData,
   hideRgba,
   isHidden,

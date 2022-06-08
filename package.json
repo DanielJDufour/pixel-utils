@@ -62,10 +62,11 @@
   "scripts": {
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:web",
     "build:cjs": "npx babel --plugins @babel/plugin-transform-modules-commonjs --plugins @babel/plugin-proposal-export-namespace-from dist/esm --out-dir dist/cjs",
-    "build:esm": "npx babel --extensions \".ts\" --ignore '**/test.ts' --ignore '**/index.md' --plugins @babel/plugin-proposal-export-namespace-from --presets @babel/preset-typescript src --out-dir dist/esm",
+    "build:esm": "npx babel --extensions \".ts\" --ignore '**/test.ts' --ignore '**/index.md' --plugins @babel/plugin-proposal-export-namespace-from --presets @babel/preset-typescript src --out-dir dist/esm && rm -fr ./dist/*/*bak*",
     "build:web": "npx mkdirp ./dist/web && npx browserify ./dist/cjs/bundle.js > ./dist/web/pixel-utils.js",
     "clean": "npx rimraf dist",
     "format": "npx prettier --arrow-parens=avoid --print-width=240 --trailing-comma=none --write ./src/*.ts ./src/*/*.ts",
+    "setup": "cd data && sh ./setup.sh",
     "test": "npm run test:src && npm run test:cjs && npm run test:esm && npm run test:web",
     "test:src": "for f in src/*/test.ts; do echo \"\nrunning $f\" && npx ts-node $f; done",
     "test:cjs": "node -r ./dist/cjs/index.js -e ''",
@@ -97,12 +98,12 @@
     "@babel/preset-typescript": "^7.16.7",
     "doctrine": "^3.0.0",
     "esm": "^3.2.25",
-    "flug": "^2.2.0",
-    "readim": "^0.0.2",
-    "typescript": "^4.6.4",
-    "xdim": "^1.5.2"
+    "find-and-read": "^1.2.0",
+    "flug": "^2.3.1",
+    "readim": "^0.0.2"
   },
   "dependencies": {
-    "quick-scale": "^0.1.0"
+    "quick-scale": "^0.1.0",
+    "xdim": "^1.6.0"
   }
 }
