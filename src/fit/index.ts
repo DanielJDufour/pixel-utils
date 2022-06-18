@@ -37,7 +37,10 @@ export default function fit({
   height: number;
   ranges: number[][];
   width: number;
-}) {
+}): {
+  data: number[] | number[][] | number[][][];
+  layout: string;
+} {
   if (!ranges) throw new Error("[expand] can't expand without ranges");
   if (debug_level >= 1) console.log("[stretch] starting fit");
   if (typeof height !== "number") throw new Error("[fit] height must be a number");
