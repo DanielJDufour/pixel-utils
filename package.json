@@ -1,6 +1,6 @@
 {
   "name": "pixel-utils",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Utility Functions for Pixels",
   "types": "./src/index.ts",
   "main": "./dist/cjs/index.js",
