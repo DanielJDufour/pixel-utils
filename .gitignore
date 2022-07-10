@@ -107,3 +107,4 @@ dist
 *pnpm*
 data/*.tif*
 data/eu_pasture.*
+.DS_Store
