@@ -67,12 +67,15 @@ export default function rawToRgb<F extends "array" | "string">({
 
   if (nbands === 1) {
     if (format === "string") {
+      // @ts-ignore
       return convertSingleStr.bind(null, old_no_data_value, rgbToStr(new_no_data_pixel as any), ...scalefns);
     } else {
+      // @ts-ignore
       return convertSingle.bind(null, old_no_data_value, new_no_data_pixel, ...scalefns);
     }
   } else if (nbands === 2) {
     if (format === "string") {
+      // @ts-ignore
       return convertDoubleStr.bind(null, old_no_data_value, rgbToStr(new_no_data_pixel as any), ...scalefns);
     } else {
       // @ts-ignore
