@@ -112,6 +112,6 @@
   },
   "dependencies": {
     "quick-scale": "^0.1.0",
-    "xdim": "^1.6.0"
+    "xdim": "^1.7.0"
   }
 }
