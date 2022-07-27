@@ -9,14 +9,14 @@ import selectPixel from "./index";
 
 (async () => {
   const buf = readFileSync("./src/select-pixel/flower.png");
-  const { pixels, height, width } = await readim({ data: buf });
+  const { pixels, height, width }: { pixels: number[]; height: number; width: number } = await readim({ data: buf });
   const depth = 4; // PNG (RGBA)
 
-  const layouts = ["[band][row][column]", "[band][row,column]", "[band,row,column]", "[row][column][band]", "[row][column,band]", "[row,column,band]"];
+  const layouts = ["[band][row][column]", "[band][row,column]", "[band,row,column]", "[row][column][band]", "[row][column,band]", "[row,column,band]"] as const;
 
   layouts.forEach(layout => {
     test("select pixel from " + layout, ({ eq }) => {
-      const { data } = transform({
+      const { data }: { data: any[] } = transform({
         data: pixels,
         from: "[row,column,band]",
         to: layout,

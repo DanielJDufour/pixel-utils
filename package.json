@@ -112,6 +112,7 @@
   },
   "dependencies": {
     "quick-scale": "^0.1.0",
-    "xdim": "^1.7.0"
+    "type-fest": "^2.17.0",
+    "xdim": "^1.8.0"
   }
 }

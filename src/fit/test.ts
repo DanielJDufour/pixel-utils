@@ -33,7 +33,7 @@ test("fit: single-band", async ({ eq }) => {
     new_no_data_value: 0,
     ranges: [[0, 1]],
     width
-  }) as { data: number[]; layout: string };
+  });
 
   const top_left_pixel = result.data.slice(0, 4);
   eq(top_left_pixel, [0, 0, 0, 0]);
@@ -71,7 +71,7 @@ test("fit: single-band flip=true", async ({ eq }) => {
     new_no_data_value: 0,
     ranges: [[0, 1]],
     width
-  }) as { data: number[]; layout: string };
+  });
 
   const top_left_pixel = result.data.slice(0, 4);
   eq(top_left_pixel, [0, 0, 0, 0]);
@@ -110,7 +110,7 @@ test("fit: single-band flip=true new_no_data_value=255", async ({ eq }) => {
     new_no_data_value: 255,
     ranges: [[0, 1]],
     width
-  }) as { data: number[]; layout: string };
+  });
 
   const top_left_pixel = result.data.slice(0, 4);
   eq(top_left_pixel, [255, 255, 255, 0]);

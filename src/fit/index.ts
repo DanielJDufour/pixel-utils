@@ -3,11 +3,11 @@ import { prepareData, prepareUpdate } from "xdim";
 import rawToRgba from "../raw-to-rgba";
 import selectPixel from "../select-pixel";
 
-import type { NO_DATA_STRATEGY, UINT8, Range, NO_DATA_VALUE } from "../types";
+import type { ndarray, NO_DATA_STRATEGY, UINT8, Range, NO_DATA_VALUE } from "../types";
 
 // fit raw bands to 8-bit color space
 // while slicing and scaling as necessary
-export default function fit({
+export default function fit<L extends string = "[row,column,band]">({
   data,
   debug_level = 0,
   depth,
@@ -17,6 +17,7 @@ export default function fit({
   no_data_strategy = "partial", // png strategy
   no_range_value,
   no_range_value_strategy = "top",
+  // @ts-ignore
   new_layout = "[row,column,band]",
   new_no_data_value,
   height,
@@ -32,13 +33,13 @@ export default function fit({
   no_data_strategy?: string;
   no_range_value?: number;
   no_range_value_strategy?: string;
-  new_layout?: string;
+  new_layout?: L;
   new_no_data_value?: UINT8 | number; // loosely accepting number
   height: number;
   ranges: number[][];
   width: number;
 }): {
-  data: number[] | number[][] | number[][][];
+  data: ndarray<L>;
   layout: string;
 } {
   if (!ranges) throw new Error("[expand] can't expand without ranges");
