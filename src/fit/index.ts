@@ -17,8 +17,7 @@ export default function fit<L extends string = "[row,column,band]">({
   no_data_strategy = "partial", // png strategy
   no_range_value,
   no_range_value_strategy = "top",
-  // @ts-ignore
-  new_layout = "[row,column,band]",
+  new_layout,
   new_no_data_value,
   height,
   ranges,
@@ -47,6 +46,9 @@ export default function fit<L extends string = "[row,column,band]">({
   if (typeof height !== "number") throw new Error("[fit] height must be a number");
   if (typeof width !== "number") throw new Error("[fit] height must be a number");
   if (typeof old_layout !== "string") throw new Error("[fit] old_layout must be a string");
+
+  if (new_layout === undefined) new_layout === ("[row,column,band]" as const);
+
   if (typeof new_layout !== "string") throw new Error("[fit] new_layout must be a string");
 
   const select = selectPixel(data, {
@@ -94,6 +96,7 @@ export default function fit<L extends string = "[row,column,band]">({
   if (debug_level >= 1) console.log("[pixel-utils/fit] out_data:", out_data);
 
   return {
+    // @ts-ignore
     data: out_data,
     layout: new_layout
   };

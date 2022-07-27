@@ -75,11 +75,12 @@
     "f": "npm run format",
     "format": "npx prettier --arrow-parens=avoid --print-width=240 --trailing-comma=none --write ./src/*.ts ./src/*/*.ts",
     "setup": "cd data && sh ./setup.sh",
-    "test": "npm run test:ts && npm run test:src && npm run test:cjs && npm run test:esm && npm run test:web",
+    "test": "npm run test:tsc && npm run test:ts && npm run test:src && npm run test:cjs && npm run test:esm && npm run test:web",
     "test:src": "for f in src/*/test.ts; do echo \"\nrunning $f\" && npx ts-node $f; done",
     "test:cjs": "node -r ./dist/cjs/index.js -e ''",
     "test:esm": "node -r esm -r ./dist/esm/index.js -e ''",
     "test:ts": "npx ts-node ./test.ts",
+    "test:tsc": "tsc --noEmit ./src/index.ts",
     "test:web": "node -r ./dist/web/pixel-utils.js -e ''"
   },
   "repository": {
@@ -108,7 +109,8 @@
     "esm": "^3.2.25",
     "find-and-read": "^1.2.0",
     "flug": "^2.3.1",
-    "readim": "^0.0.2"
+    "readim": "^0.0.2",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
     "quick-scale": "^0.1.0",
