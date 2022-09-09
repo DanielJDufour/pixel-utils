@@ -62,3 +62,16 @@ type Count<
 type NDIMS<layout extends string> = Count<layout, "[">;
 
 export type ndarray<layout extends string> = MultidimensionalArray<number, NDIMS<layout>>;
+
+export type TYPED_ARRAY =
+  | Int8Array
+  | Uint8Array
+  | Uint8ClampedArray
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array
+  | BigInt64Array
+  | BigUint64Array;

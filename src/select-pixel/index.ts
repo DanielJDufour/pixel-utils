@@ -1,5 +1,5 @@
 import { Layout } from "../enums";
-import type { RawPixel } from "../types";
+import type { RawPixel, TYPED_ARRAY } from "../types";
 
 import select_brc from "./select-pixel-from-brc";
 import select_b_r_c from "./select-pixel-from-b-r-c";
@@ -12,7 +12,10 @@ import select_r_cb from "./select-pixel-from-r-cb";
 
 export type SelectPixelFunction = (row: number, column: number) => RawPixel;
 
-export default function selectPixel(data: number[] | number[][] | number[][][], { depth, height, layout, width }: { depth: number; height: number; layout: Layout | string; width: number }): SelectPixelFunction {
+export default function selectPixel(
+  data: number[] | number[][] | number[][][] | TYPED_ARRAY | TYPED_ARRAY[] | TYPED_ARRAY[][],
+  { depth, height, layout, width }: { depth: number; height: number; layout: Layout | string; width: number }
+): SelectPixelFunction {
   // console.log("layout:", {layout, data, depth, width});
   switch (layout) {
     case Layout["[band][row][column]"]:

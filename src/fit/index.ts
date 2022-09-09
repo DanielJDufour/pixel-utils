@@ -3,7 +3,7 @@ import { prepareData, prepareUpdate } from "xdim";
 import rawToRgba from "../raw-to-rgba";
 import selectPixel from "../select-pixel";
 
-import type { ndarray, NO_DATA_STRATEGY, UINT8, Range, NO_DATA_VALUE } from "../types";
+import type { ndarray, NO_DATA_STRATEGY, UINT8, Range, NO_DATA_VALUE, TYPED_ARRAY } from "../types";
 
 // fit raw bands to 8-bit color space
 // while slicing and scaling as necessary
@@ -23,7 +23,7 @@ export default function fit<L extends string = "[row,column,band]">({
   ranges,
   width
 }: {
-  data: number[] | number[][] | number[][][];
+  data: number[] | number[][] | number[][][] | TYPED_ARRAY | TYPED_ARRAY[] | TYPED_ARRAY[][];
   debug_level?: number;
   depth: number;
   flip?: boolean;
