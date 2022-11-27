@@ -3,15 +3,7 @@ import { prepareData, prepareUpdate } from "xdim";
 import rawToRgba from "../raw-to-rgba";
 import selectPixel from "../select-pixel";
 
-import type {
-  ndarray,
-  NO_DATA_STRATEGY,
-  UINT8,
-  Range,
-  NO_DATA_VALUE,
-  TYPED_ARRAY,
-  DATA_LAYOUT
-} from "../types";
+import type { ndarray, NO_DATA_STRATEGY, UINT8, Range, NO_DATA_VALUE, TYPED_ARRAY, DATA_LAYOUT } from "../types";
 
 // fit raw bands to 8-bit color space
 // while slicing and scaling as necessary
@@ -25,7 +17,7 @@ export default function fit<L extends DATA_LAYOUT>({
   no_data_strategy = "partial", // png strategy
   no_range_value,
   no_range_value_strategy = "top",
-  new_layout = ("[row,column,band]" as any),
+  new_layout = "[row,column,band]" as any,
   new_no_data_value,
   height,
   ranges,
@@ -77,6 +69,7 @@ export default function fit<L extends DATA_LAYOUT>({
 
   const convert = rawToRgba({
     debug_level: debug_level - 1,
+    format: "array",
     flip,
     ranges: ranges as Range[],
     new_no_data_value: new_no_data_value as NO_DATA_VALUE,

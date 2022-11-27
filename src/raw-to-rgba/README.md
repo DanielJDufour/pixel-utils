@@ -1,5 +1,5 @@
 # `rawToRgba`
-> convert a raw pixel value to RGBA
+> Convert a Raw Pixel to RGBA
 
 ## description
 You normally want to convert a raw pixel to an RGBA 3-Band pixel when you
@@ -19,6 +19,9 @@ const old_no_data_value = 65536;
 
 rawToRgba({ ranges, old_no_data_value })(pixel);
 [24, 24, 24, 255]
+
+rawToRgba({ format: "string", ranges, old_no_data_value })(pixel);
+"rgba(24, 24, 24, 255)"
 
 // using same pixel as above, but reserving 0 for the new no data value
 rawToRgba({ ranges, old_no_data_value, new_no_data_value: 0 })(pixel);

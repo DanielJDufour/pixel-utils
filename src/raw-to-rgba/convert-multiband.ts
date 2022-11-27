@@ -1,6 +1,6 @@
-import type { NoDataValue, RawPixel, CleanRGBA, ScaleFunction } from "../types";
+import type { RawNoDataValue, NoDataValue, RawPixel, CleanRGBA, ScaleFunction } from "../types";
 
-export default function convert_multiband(old_no_data_value: NoDataValue, new_no_data_value: NoDataValue, scalefn1: ScaleFunction, scalefn2: ScaleFunction, scalefn3: ScaleFunction, pixel: RawPixel): CleanRGBA {
+export default function convert_multiband(old_no_data_value: RawNoDataValue, new_no_data_value: NoDataValue, scalefn1: ScaleFunction, scalefn2: ScaleFunction, scalefn3: ScaleFunction, pixel: RawPixel): CleanRGBA {
   const [r, g, b] = pixel;
   return [
     // @ts-ignore
