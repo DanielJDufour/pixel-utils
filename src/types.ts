@@ -47,7 +47,7 @@ export type RAW_PIXEL = number[];
 export type VISIBLE_RGBA = [Red, Green, Blue, VISIBLE_ALPHA];
 export type DIRTY_RGB = [null | UINT8, null | UINT8, null | UINT8];
 
-export type LAYOUT = "[band,row,column]" | "[band][row,column]" | "[band][row][column]" | "[band,row][column]" | "[row,column,band]" | "[row,column][band]" | "[row][column,band]" | "[row][column][band]";
+export type DATA_LAYOUT = "[row,column,band]" | "[band,row,column]" | "[band][row,column]" | "[band][row][column]" | "[band,row][column]" | "[row,column,band]" | "[row,column][band]" | "[row][column,band]" | "[row][column][band]";
 
 // width modification from https://dev.to/tylim88/typescript-count-substring-of-a-string-literal-type-536b
 // prettier-ignore

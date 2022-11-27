@@ -3,11 +3,19 @@ import { prepareData, prepareUpdate } from "xdim";
 import rawToRgba from "../raw-to-rgba";
 import selectPixel from "../select-pixel";
 
-import type { ndarray, NO_DATA_STRATEGY, UINT8, Range, NO_DATA_VALUE, TYPED_ARRAY } from "../types";
+import type {
+  ndarray,
+  NO_DATA_STRATEGY,
+  UINT8,
+  Range,
+  NO_DATA_VALUE,
+  TYPED_ARRAY,
+  DATA_LAYOUT
+} from "../types";
 
 // fit raw bands to 8-bit color space
 // while slicing and scaling as necessary
-export default function fit<L extends string = "[row,column,band]">({
+export default function fit<L extends DATA_LAYOUT>({
   data,
   debug_level = 0,
   depth,
@@ -17,7 +25,7 @@ export default function fit<L extends string = "[row,column,band]">({
   no_data_strategy = "partial", // png strategy
   no_range_value,
   no_range_value_strategy = "top",
-  new_layout,
+  new_layout = ("[row,column,band]" as any),
   new_no_data_value,
   height,
   ranges,
@@ -46,9 +54,6 @@ export default function fit<L extends string = "[row,column,band]">({
   if (typeof height !== "number") throw new Error("[fit] height must be a number");
   if (typeof width !== "number") throw new Error("[fit] height must be a number");
   if (typeof old_layout !== "string") throw new Error("[fit] old_layout must be a string");
-
-  if (new_layout === undefined) new_layout === ("[row,column,band]" as const);
-
   if (typeof new_layout !== "string") throw new Error("[fit] new_layout must be a string");
 
   const select = selectPixel(data, {
