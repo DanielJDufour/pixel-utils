@@ -28,6 +28,7 @@
     "src/is-no-data/index.ts",
     "src/make-no-data-rgb/index.ts",
     "src/make-no-data-rgba/index.ts",
+    "src/make-no-data-rgba-string/index.ts",
     "src/pop-alpha/index.ts",
     "src/push-alpha/index.ts",
     "src/range/index.ts",
