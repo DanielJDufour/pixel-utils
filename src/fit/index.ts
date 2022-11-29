@@ -35,7 +35,7 @@ export default function fit<L extends DATA_LAYOUT>({
   new_layout?: L;
   new_no_data_value?: UINT8 | number; // loosely accepting number
   height: number;
-  ranges: number[][];
+  ranges: [number, number][] | Readonly<[number, number]>[] | Readonly<Readonly<[number, number]>[]>;
   width: number;
 }): {
   data: ndarray<L>;
@@ -71,7 +71,7 @@ export default function fit<L extends DATA_LAYOUT>({
     debug_level: debug_level - 1,
     format: "array",
     flip,
-    ranges: ranges as Range[],
+    ranges,
     new_no_data_value: new_no_data_value as NO_DATA_VALUE,
     no_data_strategy: no_data_strategy as NO_DATA_STRATEGY,
     no_range_value: no_range_value as UINT8,

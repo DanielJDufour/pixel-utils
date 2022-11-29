@@ -30,7 +30,7 @@ export default function rawToRgba<F extends "array" | "string">({
 }: {
   debug_level?: number;
   format?: F;
-  ranges: Range[];
+  ranges: [number, number][] | Readonly<[number, number]>[] | Readonly<Readonly<[number, number]>[]>;
   flip?: boolean;
   new_no_data_value?: NoDataValue;
   no_data_strategy?: NO_DATA_STRATEGY;

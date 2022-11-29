@@ -29,7 +29,7 @@ export default function rawToRgb<F extends "array" | "string">({
   round = true
 }: {
   format?: F;
-  ranges: Range[];
+  ranges: [number, number][] | Readonly<[number, number]>[] | Readonly<Readonly<[number, number]>[]>;
   flip?: boolean;
   new_no_data_pixel?: NullableRGB;
   new_no_data_value?: NoDataValue;
