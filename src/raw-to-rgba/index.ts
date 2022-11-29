@@ -15,7 +15,7 @@ import convertMultiString from "./convert-multiband-str";
 import convertMultiAll from "./convert-multiband-all";
 import convertMultiAllString from "./convert-multiband-all-str";
 
-import type { NO_DATA_STRATEGY, NoDataValue, UINT8, Range, RawNoDataValue, RawPixel, CleanRGBA } from "../types";
+import type { NO_DATA_STRATEGY, NoDataValue, UINT8, RawNoDataValue, RawPixel, CleanRGBA } from "../types";
 
 export default function rawToRgba<F extends "array" | "string">({
   debug_level = 0,

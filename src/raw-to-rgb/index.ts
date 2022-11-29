@@ -15,7 +15,7 @@ import convertMultiStr from "./convert-many-str";
 
 import rgbToStr from "../rgb-to-str";
 
-import type { NoDataValue, NullableRGB, RawPixel, Pixel, UINT8, Range, RGB } from "../types";
+import type { NoDataValue, NullableRGB, RawPixel, UINT8, RGB } from "../types";
 
 export default function rawToRgb<F extends "array" | "string">({
   format = "array" as F,
@@ -54,7 +54,7 @@ export default function rawToRgb<F extends "array" | "string">({
 
   if (new_no_data_pixel === undefined) throw new Error("[raw-to-rgb] undefined new_no_data_pixel");
 
-  const new_range: Range = [0 === new_no_data_value ? 1 : 0, 255 === new_no_data_value ? 254 : 255];
+  const new_range: [number, number] = [0 === new_no_data_value ? 1 : 0, 255 === new_no_data_value ? 254 : 255];
 
   const options = {
     flip,

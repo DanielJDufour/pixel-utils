@@ -3,7 +3,7 @@ import { prepareData, prepareUpdate } from "xdim";
 import rawToRgba from "../raw-to-rgba";
 import selectPixel from "../select-pixel";
 
-import type { ndarray, NO_DATA_STRATEGY, UINT8, Range, NO_DATA_VALUE, TYPED_ARRAY, DATA_LAYOUT } from "../types";
+import type { ndarray, NO_DATA_STRATEGY, UINT8, NO_DATA_VALUE, TYPED_ARRAY, DATA_LAYOUT } from "../types";
 
 // fit raw bands to 8-bit color space
 // while slicing and scaling as necessary
