@@ -42,7 +42,7 @@ export default function rawToRgba<F extends "array" | "string">({
 
   const nbands = ranges.length;
 
-  const new_range: Range = [0 === new_no_data_value ? 1 : 0, 255 === new_no_data_value ? 254 : 255];
+  const new_range: [number, number] = [0 === new_no_data_value ? 1 : 0, 255 === new_no_data_value ? 254 : 255];
   if (debug_level >= 1) console.log("[pixel-utils/raw-to-rgba] new_range:", new_range);
 
   const options = {
