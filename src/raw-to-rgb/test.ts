@@ -75,26 +75,41 @@ test("convert_many_band_pixel_to_rgb_css", ({ eq }) => {
 test("create_raw_to_rgb", ({ eq }) => {
   eq(rawToRgb({ ranges: [[0, 65536]] })([65536]), [255, 255, 255]);
   eq(rawToRgb({ format: "string", ranges: [[0, 65536]] })([65536]), "rgb(255, 255, 255)");
+  eq(rawToRgb({ format: "hex", ranges: [[0, 65536]] })([65536]), "#ffffff");
+
   eq(rawToRgb({ ranges: [[0, 65536]], old_no_data_value: 0 })([65536]), [255, 255, 255]);
   eq(rawToRgb({ format: "string", ranges: [[0, 65536]], old_no_data_value: 0 })([65536]), "rgb(255, 255, 255)");
+  eq(rawToRgb({ format: "hex", ranges: [[0, 65536]], old_no_data_value: 0 })([65536]), "#ffffff");
+
   eq(rawToRgb({ ranges: [[0, 65536]], new_no_data_value: 255 })([65536]), [254, 254, 254]);
   eq(rawToRgb({ format: "string", ranges: [[0, 65536]], new_no_data_value: 255 })([65536]), "rgb(254, 254, 254)");
+  eq(rawToRgb({ format: "hex", ranges: [[0, 65536]], new_no_data_value: 255 })([65536]), "#fefefe");
+
   eq(rawToRgb({ ranges: [[0, 65536]], new_no_data_value: 0 })([0]), [1, 1, 1]);
   eq(rawToRgb({ format: "string", ranges: [[0, 65536]], new_no_data_value: 0 })([0]), "rgb(1, 1, 1)");
+  eq(rawToRgb({ format: "hex", ranges: [[0, 65536]], new_no_data_value: 0 })([0]), "#111");
+
   // prettier-ignore
   eq(rawToRgb({ ranges: [ [0, 65536], [0, 65536], [0, 65536] ], new_no_data_value: 255, round: true })([1275, 2314, 4311]), [5, 9, 17] );
   // prettier-ignore
   eq(rawToRgb({ format: "string", ranges: [ [0, 65536], [0, 65536], [0, 65536] ], new_no_data_value: 255, round: true })([1275, 2314, 4311]), "rgb(5, 9, 17)");
   // prettier-ignore
+  eq(rawToRgb({ format: "hex", ranges: [ [0, 65536], [0, 65536], [0, 65536] ], new_no_data_value: 255, round: true })([1275, 2314, 4311]), "#050911");
+
+  // prettier-ignore
   eq(rawToRgb({ ranges: [ [0, 65536], [0, 65536], [0, 65536], [0, 65536] ], new_no_data_value: 255, round: true })([1275, 2314, 4311, 52311, 542622]), [5, 9, 17]);
   // prettier-ignore
   eq(rawToRgb({ format: "string", ranges: [ [0, 65536], [0, 65536], [0, 65536], [0, 65536] ], new_no_data_value: 255, round: true })([1275, 2314, 4311, 52311, 542622]), "rgb(5, 9, 17)");
+  // prettier-ignore
+  eq(rawToRgb({ format: "hex", ranges: [ [0, 65536], [0, 65536], [0, 65536], [0, 65536] ], new_no_data_value: 255, round: true })([1275, 2314, 4311, 52311, 542622]), "#050911");
 
   // edge cases where second band is all the same value, so range is zero
   // prettier-ignore
   eq(rawToRgb({ ranges: [ [0, 65536], [2314, 2314] ] })([1275, 2314]), [5, 255, 0]);
   // prettier-ignore
   eq(rawToRgb({ format: "string", ranges: [ [0, 65536], [2314, 2314] ] })([1275, 2314]), "rgb(5, 255, 0)");
+  // prettier-ignore
+  eq(rawToRgb({ format: "hex", ranges: [ [0, 65536], [2314, 2314] ] })([1275, 2314]), "#05ff00");
 
   eq(
     rawToRgb({

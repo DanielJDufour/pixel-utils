@@ -45,4 +45,8 @@ rawToRgb({ ranges, old_no_data_value: 0, new_no_data_pixel: [255, 0, 0] })(0);
 // if you want an RGB pixel as a string
 rawToRgb({ format: "string", ranges })(0);
 "rgb(0, 0, 0)"
+
+// if you want an RGB pixel as a HEX string
+rawToRgb({ format: "string", ranges })(0);
+"#000000"
 ```
