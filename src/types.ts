@@ -11,6 +11,7 @@ export type AlphaHidden = 0;
 export type AlphaVisible = 255;
 export type CleanAlpha = AlphaHidden | AlphaVisible;
 export type RandomAlpha = UINT8;
+export type Range = [number, number];
 export type RGB = [Red, Green, Blue];
 export type NullableRGB = NoDataPixel | RGB;
 export type RawRGBA = [Red, Green, Blue, RandomAlpha];
