@@ -77,7 +77,7 @@
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:web",
     "build:cjs": "npx babel --plugins @babel/plugin-transform-modules-commonjs --plugins @babel/plugin-proposal-export-namespace-from dist/esm --out-dir dist/cjs",
     "build:esm": "npx babel --extensions \".ts\" --ignore '**/test.ts' --ignore '**/index.md' --plugins @babel/plugin-proposal-export-namespace-from --plugins @babel/plugin-proposal-nullish-coalescing-operator --presets @babel/preset-typescript src --out-dir dist/esm && rm -fr ./dist/*/*bak*",
-    "build:web": "npx --offline mkdirp ./dist/web && npx --offline browserify ./dist/cjs/bundle.js > ./dist/web/pixel-utils.js",
+    "build:web": "mkdirp ./dist/web && npx --offline browserify ./dist/cjs/bundle.js > ./dist/web/pixel-utils.js",
     "clean": "npx --offline rimraf dist",
     "f": "npm run format",
     "format": "npx prettier --arrow-parens=avoid --print-width=240 --trailing-comma=none --write ./src/*.ts ./src/*/*.ts",
@@ -117,6 +117,7 @@
     "esm": "^3.2.25",
     "find-and-read": "^1.2.0",
     "flug": "^2.3.1",
+    "mkdirp": "^3.0.1",
     "readim": "^1.0.0",
     "rimraf": "^5.0.5",
     "typescript": "^4.9.3"
